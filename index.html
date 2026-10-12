@@ -45,18 +45,40 @@
 
         footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(0, 242, 255, 0.2); font-size: 0.85rem; color: #64748b; background: rgba(7, 9, 19, 0.95); }
 
-        /* --- STYLY AUTOMATY --- */
+        /* --- AUTOMATY STYLY --- */
         .slot-window { width: 100px; height: 130px; overflow: hidden; position: relative; border-radius: 12px; background: rgba(10, 15, 30, 0.9); border: 2px solid #00f2ff; box-shadow: inset 0 0 15px rgba(0,242,255,0.2); }
         .slot-strip { position: absolute; top: 0; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .slot-strip.spinning { filter: blur(4px); }
         .slot-symbol { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
 
-        /* --- STYLY BLACKJACK --- */
-        .card-item-pro { width: 70px; height: 100px; background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%); color: #0f172a; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; padding: 6px; font-size: 1rem; font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,0.6); position: relative; user-select: none; border: 1px solid #cbd5e1; }
-        .card-red { color: #e11d48; }
-        .card-back { background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%) !important; border: 1px solid #00f2ff !important; }
+        /* --- LUXUSNÍ DESIGN KARET PRO BLACKJACK --- */
+        .card-item-pro { 
+            width: 78px; 
+            height: 112px; 
+            background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%); 
+            color: #0f172a; 
+            border-radius: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            padding: 8px; 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.8) inset; 
+            position: relative; 
+            user-select: none; 
+            border: 2px solid #cbd5e1;
+            transition: transform 0.2s;
+        }
+        .card-item-pro:hover { transform: translateY(-4px); }
+        .card-red { color: #dc2626; }
+        .card-back { 
+            background: radial-gradient(circle, #0284c7 0%, #0369a1 60%, #0f172a 100%) !important; 
+            border: 2px solid #00f2ff !important; 
+            box-shadow: 0 0 15px rgba(0,242,255,0.4) !important;
+        }
 
-        /* --- STYLY RULETA & KOLO ŠTĚSTÍ --- */
+        /* --- RULETA STYLY --- */
         .roulette-container { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start; }
         .roulette-left { flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; }
         .roulette-right { flex: 1.4; min-width: 320px; }
@@ -83,6 +105,13 @@
         .cell-green { background: #16a34a; color: #fff; }
         .board-chip-badge { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: #00f2ff; color: #000; font-size: 0.65rem; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 6px #00f2ff; z-index: 5; pointer-events: none; }
 
+        /* --- STYLY DOSTIHY --- */
+        .race-track { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.75rem; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; position: relative; }
+        .horse-lane { display: flex; align-items: center; gap: 0.5rem; background: rgba(7, 9, 19, 0.6); padding: 0.5rem; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.05); }
+        .horse-info { width: 140px; text-align: left; font-size: 0.85rem; font-weight: 700; }
+        .horse-track-area { flex: 1; height: 36px; background: rgba(255,255,255,0.03); border-radius: 18px; position: relative; border-right: 4px dashed #ef4444; overflow: hidden; }
+        .horse-avatar { position: absolute; left: 0; top: 50%; transform: translateY(-50%); font-size: 1.6rem; transition: left 0.1s linear; }
+
         /* --- STYLY MINES --- */
         .mines-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: 350px; margin: 0 auto; }
         .mine-cell { aspect-ratio: 1; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: 0.2s; user-select: none; }
@@ -108,11 +137,10 @@
             <button onclick="switchTab('blackjack')" id="nav-blackjack" class="tab-btn">Blackjack 🃏</button>
             <button onclick="switchTab('crash')" id="nav-crash" class="tab-btn">Crash 🚀</button>
             <button onclick="switchTab('roulette')" id="nav-roulette" class="tab-btn">Ruleta 🎡</button>
-            <button onclick="switchTab('wheel')" id="nav-wheel" class="tab-btn">Kolo Štěstí 🎯</button>
+            <button onclick="switchTab('racing')" id="nav-racing" class="tab-btn">Dostihy 🐎</button>
             <button onclick="switchTab('mines')" id="nav-mines" class="tab-btn">Mines 💣</button>
         </nav>
 
-        <!-- POUZE NEONCOINS STAV -->
         <div class="balance-badge">
             <span>💰 ZŮSTATEK:</span>
             <span id="header-balance">1000</span> NC
@@ -126,49 +154,113 @@
         <section id="tab-lobby" class="section active">
             <div class="glass-panel neon-box" style="padding: 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
                 <div style="max-width: 600px;">
-                    <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); margin-bottom: 1rem;">Gcasino • Ultimate Edition</span>
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); margin-bottom: 1rem;">Gcasino • Ultimate Race Edition</span>
                     <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">Hrajte o <span style="background: linear-gradient(90deg, #00f2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NeonCoins (NC)</span></h1>
-                    <p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 1.05rem;">Kompletně animovaná ruleta, férový férový Crash, Kolo štěstí a pevné sázky u min!</p>
-                    <button onclick="switchTab('slots')" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem; font-size: 1rem;">Zahrát si Automaty</button>
+                    <p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 1.05rem;">Vsaďte si na koně v dostizích, vyzkoušejte zcela náhodný Crash nebo roztočte ruletu!</p>
+                    <button onclick="switchTab('racing')" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem; font-size: 1rem;">Jít na Dostihy 🐎</button>
                 </div>
                 <div style="font-size: 5rem; padding: 2rem; background: rgba(0,242,255,0.05); border-radius: 1.5rem; border: 1px solid rgba(0,242,255,0.2);">
-                    🎰🚀🎡
+                    🐎🎰🚀
                 </div>
             </div>
 
             <div style="margin-top: 2rem;">
                 <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #00f2ff;">⚡ Výběr her</h2>
                 <div class="grid-cards">
+                    <div class="glass-panel game-card" onclick="switchTab('racing')">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🐎</div>
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Dostihy</h3>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Vsaďte na favorita nebo outsidera a sledujte závod!</p>
+                    </div>
                     <div class="glass-panel game-card" onclick="switchTab('slots')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎰</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Neon Slots</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Animované válce a pevné rozmezí sázek.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Animované válce a pevné sázky od 0.5 do 50 NC.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('blackjack')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🃏</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Blackjack Pro</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Souboj s krupiérem o magickou hranici 21 bodů.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Vylepšené luxusní karty v souboji o 21 bodů.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('crash')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Crash</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Reálně náhodná raketa s volitelným Auto-Cashoutem.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">100% nezávislý náhodný násobitel bez podvodů.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('roulette')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎡</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Neon Roulette</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Točící se ruletové kolo a sázky pomocí NC žetonů.</p>
-                    </div>
-                    <div class="glass-panel game-card" onclick="switchTab('wheel')">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
-                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Kolo Štěstí</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Vyzkoušejte štěstí na točícím se kole s násobiteli.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Fyzicky se točící kolo a sázkový stůl se žetony.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('mines')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">💣</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Mines</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Pevné sázky a odstupňovaná výhra podle počtu bomb.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">1 až 10 bomb na poli s vysokými odměnami.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOSTIHY (NÁHRADA ZA KOLO ŠTĚSTÍ) -->
+        <section id="tab-racing" class="section">
+            <div class="glass-panel neon-box" style="max-width: 750px; margin: 0 auto; padding: 2rem; text-align: center;">
+                <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🐎 Cyber Dostihy</h2>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Vyberte koně, vsaďte si a sledujte napínavý závod!</p>
+
+                <!-- Dostihová dráha -->
+                <div class="race-track">
+                    <div class="horse-lane">
+                        <div class="horse-info" style="color: #3b82f6;">1. Blesk (2.0x)</div>
+                        <div class="horse-track-area"><div id="horse-avatar-0" class="horse-avatar">🐎</div></div>
+                    </div>
+                    <div class="horse-lane">
+                        <div class="horse-info" style="color: #10b981;">2. Vichr (3.5x)</div>
+                        <div class="horse-track-area"><div id="horse-avatar-1" class="horse-avatar">🐎</div></div>
+                    </div>
+                    <div class="horse-lane">
+                        <div class="horse-info" style="color: #f59e0b;">3. Furia (5.0x)</div>
+                        <div class="horse-track-area"><div id="horse-avatar-2" class="horse-avatar">🐎</div></div>
+                    </div>
+                    <div class="horse-lane">
+                        <div class="horse-info" style="color: #ec4899;">4. Phantom (8.0x)</div>
+                        <div class="horse-track-area"><div id="horse-avatar-3" class="horse-avatar">🐎</div></div>
+                    </div>
+                    <div class="horse-lane">
+                        <div class="horse-info" style="color: #a855f7;">5. Titan (15.0x)</div>
+                        <div class="horse-track-area"><div id="horse-avatar-4" class="horse-avatar">🐎</div></div>
+                    </div>
+                </div>
+
+                <div id="race-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte koně, vsaďte a odstartujte závod</div>
+
+                <!-- Výběr koně -->
+                <div style="margin-bottom: 1rem;">
+                    <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Vybraný kůň:</div>
+                    <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="selectHorse(0)" class="btn-glass horse-btn active">1. Blesk (2x)</button>
+                        <button onclick="selectHorse(1)" class="btn-glass horse-btn">2. Vichr (3.5x)</button>
+                        <button onclick="selectHorse(2)" class="btn-glass horse-btn">3. Furia (5x)</button>
+                        <button onclick="selectHorse(3)" class="btn-glass horse-btn">4. Phantom (8x)</button>
+                        <button onclick="selectHorse(4)" class="btn-glass horse-btn">5. Titan (15x)</button>
+                    </div>
+                </div>
+
+                <!-- Pevné sázky -->
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Sázka (NC):</div>
+                    <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="setRaceBet(5)" class="btn-glass race-bet-btn">5</button>
+                        <button onclick="setRaceBet(10)" class="btn-glass race-bet-btn active">10</button>
+                        <button onclick="setRaceBet(25)" class="btn-glass race-bet-btn">25</button>
+                        <button onclick="setRaceBet(50)" class="btn-glass race-bet-btn">50</button>
+                    </div>
+                </div>
+
+                <button onclick="startHorseRace()" id="race-start-btn" class="neon-button" style="padding: 0.75rem 2.5rem; border-radius: 0.75rem; font-size: 1.1rem;">ODSTARTAT ZÁVOD</button>
+
+                <div class="guide-box">
+                    <h4>📖 Jak se hrají Dostihy:</h4>
+                    Zvolte jednoho z 5 koní. Koně s nižším kurzem (jako Blesk 2x) vyhrávají častěji, zatiaľ čo outsider (Titan 15x) má nižší šanci, ale přináší obří výhru. Klikněte na **ODSTARTAT ZÁVOD** a sledujte, který kůň doběhne do cíle jako první!
                 </div>
             </div>
         </section>
@@ -187,7 +279,6 @@
 
                 <div id="slot-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte sázku a roztočte automat</div>
 
-                <!-- Pevné sázky -->
                 <div style="margin-bottom: 1.5rem;">
                     <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Výběr sázky (NC):</div>
                     <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
@@ -207,7 +298,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hrají Automaty:</h4>
-                    Zvolte si jednu z pevných sázek od 0.5 do 50 NC a klikněte na **ROZTOČIT**. 3 stejné symboly dávají velký násobitel (až 25x za diamanty), jakákoliv dvojice symbolů vám vrátí 1.5x sázky.
+                    Zvolte sázku od 0.5 do 50 NC a roztáčejte. 3 stejné symboly dávají až 25x sázky (diamanty), dvojice vrátí 1.5x sázky.
                 </div>
             </div>
         </section>
@@ -225,7 +316,7 @@
                         <span>Krupiér</span>
                         <span>Skóre: <span id="dealer-score" style="color:#fff; font-weight:bold;">-</span></span>
                     </div>
-                    <div id="dealer-cards" style="display: flex; gap: 0.75rem; min-height: 105px; align-items: center;"></div>
+                    <div id="dealer-cards" style="display: flex; gap: 0.75rem; min-height: 115px; align-items: center;"></div>
                 </div>
 
                 <div class="glass-panel" style="padding: 1.25rem; margin-bottom: 1.5rem;">
@@ -233,7 +324,7 @@
                         <span>Hráč</span>
                         <span>Skóre: <span id="player-score" style="color:#fff; font-weight:bold;">-</span></span>
                     </div>
-                    <div id="player-cards" style="display: flex; gap: 0.75rem; min-height: 105px; align-items: center;"></div>
+                    <div id="player-cards" style="display: flex; gap: 0.75rem; min-height: 115px; align-items: center;"></div>
                 </div>
 
                 <div id="bj-msg" style="text-align: center; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vsaďte a začněte hru</div>
@@ -252,7 +343,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hraje Blackjack:</h4>
-                    Cílem je mít součet karet bližší **21** než krupiér, aniž byste 21 přesáhli. Karty 2–10 mají svou hodnotu, J, Q, K jsou za 10, Eso (A) je za 1 nebo 11. **HIT** vám lízne další kartu, **STAND** ukončí váš tah a hraje krupiér (který musí táhnout do součtu 17).
+                    Mějte součet karet bližší 21 než krupiér. **HIT** přidá kartu, **STAND** předá tah krupiérovi.
                 </div>
             </div>
         </section>
@@ -261,7 +352,7 @@
         <section id="tab-crash" class="section">
             <div class="glass-panel neon-box" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
                 <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🚀 Cyber Crash</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Vyberte výhru dříve, než raketa exploduje!</p>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Zcela náhodný bod exploze. Vyberte včas výhru!</p>
 
                 <div class="glass-panel neon-box" style="height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative;">
                     <div id="crash-multiplier" style="font-size: 3.5rem; font-weight: 900; color: #00f2ff;" class="neon-glow">1.00x</div>
@@ -279,7 +370,6 @@
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span style="font-size: 0.85rem; color: #94a3b8;">Auto Cashout (x):</span>
-                            <!-- BEZ ŠIPEK A ČISTÉ ZADÁVÁNÍ -->
                             <input type="number" id="crash-auto-target" placeholder="Vypnuto" step="0.1" min="1.01" style="width: 100px; text-align: center;">
                         </div>
                     </div>
@@ -292,7 +382,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hraje Cyber Crash:</h4>
-                    Sledujte stoupající násobitel. Hra má **zcela náhodný bod výbuchu** (může spadnout na 1.01x, nebo vyletět na 15x+). Pokud do políčka *Auto Cashout* napíšete číslo (např. `2.0`), výhra se vybere automaticky. Jinak musíte včas kliknout na **VYBRAT VÝHRU**.
+                    Systém vygeneruje **100% náhodné číslo**, které nevychází z vaší sázky. Násobitel může spadnout ihned na 1.01x, nebo vyletět vysoko nad 10x. Můžete nastavit Auto Cashout nebo vybírat manuálně.
                 </div>
             </div>
         </section>
@@ -304,7 +394,6 @@
                 <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">Položte žetony na sázkový stůl a roztočte kolo!</p>
 
                 <div class="roulette-container">
-                    <!-- LEVÁ STRANA: TOČÍCÍ SE RULETOVÉ KOLO -->
                     <div class="roulette-left glass-panel" style="padding: 1.5rem;">
                         <div class="wheel-outer">
                             <div class="wheel-pointer"></div>
@@ -314,7 +403,6 @@
 
                         <div id="roulette-msg" style="margin-top: 1.5rem; font-weight: 700; color: #00f2ff; text-align: center; min-height: 2.5rem;">Položte žetony na stůl</div>
 
-                        <!-- Výběr žetonů -->
                         <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem;">
                             <span style="font-size: 0.8rem; color: #94a3b8;">Žeton:</span>
                             <div onclick="selectChip(2)" id="chip-2" class="chip-btn chip-2 selected">2</div>
@@ -330,58 +418,18 @@
                         </div>
                     </div>
 
-                    <!-- PRAVÁ STRANA: SÁZKOVÝ STŮL -->
                     <div class="roulette-right glass-panel" style="padding: 1.25rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                             <span style="font-size: 0.85rem; color: #94a3b8;">Vsadit žetonů: <b id="roulette-total-bet" style="color:#00f2ff;">0</b> NC</span>
                         </div>
 
-                        <div id="roulette-board" class="roulette-board">
-                            <!-- Generováno dynamicky -->
-                        </div>
+                        <div id="roulette-board" class="roulette-board"></div>
                     </div>
                 </div>
 
                 <div class="guide-box">
                     <h4>📖 Jak se hraje Ruleta:</h4>
-                    Kliknutím vybereš žeton (2, 5, 10, 50, 100 NC) a následně klikáš na políčka na stole. Můžeš vsadit na přesné číslo (výhra 36x), na barvu (Červená/Černá - 2x), Sudou/Lichou (2x), nebo na Tucty (3x). Pak už jen roztočís fyzické kolo!
-                </div>
-            </div>
-        </section>
-
-        <!-- KOLO ŠTĚSTÍ (NÁHRADA ZA KOSTKY) -->
-        <section id="tab-wheel" class="section">
-            <div class="glass-panel neon-box" style="max-width: 650px; margin: 0 auto; padding: 2rem; text-align: center;">
-                <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🎯 Cyber Kolo Štěstí</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Roztočte kolo a trefte nejvyšší násobitel výhry!</p>
-
-                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
-                    <div class="wheel-outer" style="width: 280px; height: 280px;">
-                        <div class="wheel-pointer"></div>
-                        <canvas id="fortune-canvas" width="280" height="280" class="wheel-canvas"></canvas>
-                        <div id="fortune-center-display" class="wheel-center-cap" style="font-size: 1.1rem;">🎯</div>
-                    </div>
-                </div>
-
-                <div id="fortune-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Zvolte sázku a roztočte kolo</div>
-
-                <!-- Pevné sázky -->
-                <div style="margin-bottom: 1.5rem;">
-                    <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Sázka (NC):</div>
-                    <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
-                        <button onclick="setFortuneBet(1)" class="btn-glass fortune-bet-btn">1</button>
-                        <button onclick="setFortuneBet(5)" class="btn-glass fortune-bet-btn">5</button>
-                        <button onclick="setFortuneBet(10)" class="btn-glass fortune-bet-btn active">10</button>
-                        <button onclick="setFortuneBet(25)" class="btn-glass fortune-bet-btn">25</button>
-                        <button onclick="setFortuneBet(50)" class="btn-glass fortune-bet-btn">50</button>
-                    </div>
-                </div>
-
-                <button onclick="spinFortuneWheel()" id="fortune-spin-btn" class="neon-button" style="padding: 0.75rem 2.5rem; border-radius: 0.75rem;">ROZTOČIT KOLO</button>
-
-                <div class="guide-box">
-                    <h4>📖 Jak se hraje Kolo Štěstí:</h4>
-                    Zvolte si výši sázky a klikněte na **ROZTOČIT KOLO**. Kolo se roztočí a pole, na kterém se ukazatel zastaví, určuje vaši výhru (od 0x až po úžasný 10x násobitel vaší sázky!).
+                    Pokládejte žetony na čísla nebo barvy. Přesné číslo vyplácí 36x sázky, barvy a sudá/lichá 2x sázky.
                 </div>
             </div>
         </section>
@@ -392,19 +440,15 @@
                 <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">💣 Cyber Mines</h2>
                 <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Zvolte počet bomb a odkrývejte diamanty!</p>
 
-                <!-- Výběr bomb -->
                 <div style="margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
                     <div style="font-size: 0.9rem; color: #94a3b8;">Počet bomb na poli: <b id="mines-count-val" style="color: #00f2ff; font-size: 1.2rem;">3</b> / 10</div>
                     <input type="range" id="mines-slider" min="1" max="10" value="3" oninput="updateMinesCount(this.value)" style="width: 80%; accent-color: #00f2ff; cursor: pointer;">
                 </div>
 
-                <div id="mines-grid" class="mines-grid-container" style="margin-bottom: 1.5rem;">
-                    <!-- Generováno dynamicky -->
-                </div>
+                <div id="mines-grid" class="mines-grid-container" style="margin-bottom: 1.5rem;"></div>
 
                 <div id="mines-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte sázku a začněte hru</div>
 
-                <!-- PEVNÉ SÁZKY MÍSTO +- -->
                 <div style="margin-bottom: 1.5rem;">
                     <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Výběr sázky (NC):</div>
                     <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
@@ -427,7 +471,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hrají Cyber Mines:</h4>
-                    Nastavte počet bomb od **1 do 10**. Čím **více bomb** nastavíte, tím **extrémně vyšší je odměna** za každé odkryté políčko. Můžete kdykoliv kliknout na tlačítko Vybrat výhru a odejít s vyhranými NC!
+                    Více bomb znamená mnohonásobně vyšší odměny za každé odkryté políčko. Můžete kdykoliv bezpečně odejít stisknutím Vybrat výhru.
                 </div>
             </div>
         </section>
@@ -458,7 +502,109 @@
         }
 
         // ==========================================
-        // 1. AUTOMATY
+        // 1. DOSTIHY (HORSE RACING)
+        // ==========================================
+        const horses = [
+            { name: "1. Blesk", mult: 2.0, weight: 45 },
+            { name: "2. Vichr", mult: 3.5, weight: 28 },
+            { name: "3. Furia", mult: 5.0, weight: 15 },
+            { name: "4. Phantom", mult: 8.0, weight: 8 },
+            { name: "5. Titan", mult: 15.0, weight: 4 }
+        ];
+
+        let selectedHorseIndex = 0;
+        let raceBet = 10;
+        let isRaceRunning = false;
+
+        function selectHorse(idx) {
+            if (isRaceRunning) return;
+            selectedHorseIndex = idx;
+            document.querySelectorAll('.horse-btn').forEach((b, i) => {
+                b.classList.toggle('active', i === idx);
+            });
+        }
+
+        function setRaceBet(val) {
+            if (isRaceRunning) return;
+            raceBet = val;
+            document.querySelectorAll('.race-bet-btn').forEach(b => {
+                b.classList.remove('active');
+                if (parseFloat(b.textContent) === val) b.classList.add('active');
+            });
+        }
+
+        function startHorseRace() {
+            if (isRaceRunning) return;
+            if (balance < raceBet) {
+                document.getElementById('race-msg').textContent = "Nedostatek NC pro tuto sázku!";
+                return;
+            }
+
+            updateBalance(-raceBet);
+            isRaceRunning = true;
+            document.getElementById('race-start-btn').disabled = true;
+            document.getElementById('race-msg').textContent = "🏁 Závod odstartoval! Koně běží...";
+
+            // Vypočítat vítěze na základě pravděpodobnosti (váhy)
+            let totalWeight = horses.reduce((acc, h) => acc + h.weight, 0);
+            let rnd = Math.random() * totalWeight;
+            let winnerIndex = 0;
+
+            for (let i = 0; i < horses.length; i++) {
+                if (rnd < horses[i].weight) {
+                    winnerIndex = i;
+                    break;
+                }
+                rnd -= horses[i].weight;
+            }
+
+            // Animace běhu koní
+            let positions = [0, 0, 0, 0, 0];
+            let interval = setInterval(() => {
+                let finished = false;
+
+                for (let i = 0; i < 5; i++) {
+                    // Vítězný kůň má o něco vyšší průměrnou rychlost
+                    let speed = (Math.random() * 2.5) + (i === winnerIndex ? 1.2 : 0.6);
+                    positions[i] = Math.min(92, positions[i] + speed);
+
+                    document.getElementById('horse-avatar-' + i).style.left = positions[i] + '%';
+
+                    if (positions[i] >= 92) {
+                        finished = true;
+                    }
+                }
+
+                if (finished) {
+                    clearInterval(interval);
+                    finishRace(winnerIndex);
+                }
+            }, 80);
+        }
+
+        function finishRace(winnerIdx) {
+            isRaceRunning = false;
+            document.getElementById('race-start-btn').disabled = false;
+            const winner = horses[winnerIdx];
+
+            if (selectedHorseIndex === winnerIdx) {
+                const winAmt = Math.floor(raceBet * winner.mult);
+                updateBalance(winAmt);
+                document.getElementById('race-msg').textContent = `🎉 Vítěz: ${winner.name}! Vyhráváte ${winAmt} NC (${winner.mult}x)!`;
+            } else {
+                document.getElementById('race-msg').textContent = `Závod vyhrál ${winner.name}. Vaše sázka prohrála.`;
+            }
+
+            // Reset pozic po pauze
+            setTimeout(() => {
+                for (let i = 0; i < 5; i++) {
+                    document.getElementById('horse-avatar-' + i).style.left = '0%';
+                }
+            }, 3000);
+        }
+
+        // ==========================================
+        // 2. AUTOMATY
         // ==========================================
         const slotSymbols = ['💎', '7️⃣', '⭐', '🔔', '🍒', '🍋'];
         let slotBet = 50;
@@ -554,7 +700,7 @@
         }
 
         // ==========================================
-        // 2. BLACKJACK PRO
+        // 3. BLACKJACK PRO (LUXUSNÍ KARTY)
         // ==========================================
         let bjBet = 100;
         let deck = [];
@@ -614,13 +760,13 @@
                 
                 if (hideFirst && index === 0) {
                     div.classList.add('card-back');
-                    div.innerHTML = '<div style="margin:auto; font-size: 1.5rem;">⚡</div>';
+                    div.innerHTML = '<div style="margin:auto; font-size: 1.6rem; color:#00f2ff;">⚡</div>';
                 } else {
                     if (['♥', '♦'].includes(c.suit)) div.classList.add('card-red');
                     div.innerHTML = `
-                        <div style="line-height:1;">${c.val}</div>
-                        <div style="font-size: 1.8rem; align-self:center;">${c.suit}</div>
-                        <div style="line-height:1; text-align:right;">${c.val}</div>
+                        <div style="line-height:1; font-size:1.2rem;">${c.val}</div>
+                        <div style="font-size: 2rem; align-self:center;">${c.suit}</div>
+                        <div style="line-height:1; text-align:right; font-size:1.2rem;">${c.val}</div>
                     `;
                 }
                 container.appendChild(div);
@@ -706,7 +852,7 @@
         }
 
         // ==========================================
-        // 3. CYBER CRASH (FÉROVÁ NÁHODA & CASHOUT)
+        // 4. CYBER CRASH (100% NÁHODNÝ ALGORITMUS)
         // ==========================================
         let crashBet = 100;
         let crashInterval = null;
@@ -733,16 +879,16 @@
             crashActive = true;
             currentMultiplier = 1.00;
             
-            // FÉROVÝ NÁHODNÝ ALGORITMUS (Může spadnout hned na 1.01x nebo vyletět na 15x+)
-            let r = Math.random();
-            if (r < 0.33) {
-                crashPoint = parseFloat((1.01 + Math.random() * 0.49).toFixed(2)); // 1.01 - 1.50x
-            } else if (r < 0.75) {
-                crashPoint = parseFloat((1.51 + Math.random() * 1.49).toFixed(2)); // 1.51 - 3.00x
-            } else if (r < 0.93) {
-                crashPoint = parseFloat((3.01 + Math.random() * 3.99).toFixed(2)); // 3.01 - 7.00x
+            // ČISTO NÁHODNÉ GENEROVÁNÍ CRASH POINTU (zcela nezávislé na sázce)
+            let rnd = Math.random();
+            if (rnd < 0.25) {
+                crashPoint = parseFloat((1.01 + Math.random() * 0.45).toFixed(2)); // 1.01x - 1.46x
+            } else if (rnd < 0.65) {
+                crashPoint = parseFloat((1.47 + Math.random() * 1.53).toFixed(2)); // 1.47x - 3.00x
+            } else if (rnd < 0.90) {
+                crashPoint = parseFloat((3.01 + Math.random() * 3.99).toFixed(2)); // 3.01x - 7.00x
             } else {
-                crashPoint = parseFloat((7.01 + Math.random() * 8.00).toFixed(2)); // 7.01 - 15.00x
+                crashPoint = parseFloat((7.01 + Math.random() * 13.00).toFixed(2)); // 7.01x - 20.00x
             }
 
             document.getElementById('crash-multiplier').textContent = "1.00x";
@@ -754,7 +900,6 @@
                 currentMultiplier = parseFloat((currentMultiplier + 0.02).toFixed(2));
                 document.getElementById('crash-multiplier').textContent = currentMultiplier.toFixed(2) + 'x';
 
-                // Kontrola Auto-Cashoutu
                 if (autoTarget > 1.0 && currentMultiplier >= autoTarget && currentMultiplier < crashPoint) {
                     cashOutCrash();
                     return;
@@ -786,7 +931,7 @@
         }
 
         // ==========================================
-        // 4. RULETA (ANIMOVANÝ CANVAS & ŽETONY)
+        // 5. RULETA
         // ==========================================
         const rouletteNumbers = [
             0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10,
@@ -824,7 +969,6 @@
                 ctx.strokeStyle = 'rgba(0, 242, 255, 0.3)';
                 ctx.stroke();
 
-                // Čísla
                 ctx.save();
                 ctx.translate(130, 130);
                 ctx.rotate(angle + sliceAngle / 2);
@@ -950,7 +1094,6 @@
             const winningNum = rouletteNumbers[winningIndex];
 
             const sliceDeg = 360 / 37;
-            // Výpočet přesné rotace
             const targetDeg = 360 * 5 + (360 - (winningIndex * sliceDeg)) - 90;
 
             currentWheelAngle += targetDeg;
@@ -992,106 +1135,7 @@
         }
 
         // ==========================================
-        // 5. KOLO ŠTĚSTÍ (CYBER WHEEL)
-        // ==========================================
-        const fortuneSlices = [
-            { label: '0x', mult: 0, color: '#0f172a' },
-            { label: '1.5x', mult: 1.5, color: '#3b82f6' },
-            { label: '2x', mult: 2, color: '#10b981' },
-            { label: '0x', mult: 0, color: '#0f172a' },
-            { label: '3x', mult: 3, color: '#f59e0b' },
-            { label: '1.5x', mult: 1.5, color: '#3b82f6' },
-            { label: '5x', mult: 5, color: '#ec4899' },
-            { label: '10x', mult: 10, color: '#8b5cf6' }
-        ];
-
-        let fortuneBet = 10;
-        let fortuneAngle = 0;
-        let isFortuneSpinning = false;
-
-        function drawFortuneWheel() {
-            const canvas = document.getElementById('fortune-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const numSlices = fortuneSlices.length;
-            const sliceAngle = (2 * Math.PI) / numSlices;
-
-            ctx.clearRect(0, 0, 280, 280);
-
-            for (let i = 0; i < numSlices; i++) {
-                const angle = i * sliceAngle;
-                const slice = fortuneSlices[i];
-
-                ctx.beginPath();
-                ctx.moveTo(140, 140);
-                ctx.arc(140, 140, 135, angle, angle + sliceAngle);
-                ctx.closePath();
-
-                ctx.fillStyle = slice.color;
-                ctx.fill();
-                ctx.strokeStyle = '#00f2ff';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                ctx.save();
-                ctx.translate(140, 140);
-                ctx.rotate(angle + sliceAngle / 2);
-                ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 14px Segoe UI';
-                ctx.fillText(slice.label, 85, 5);
-                ctx.restore();
-            }
-        }
-
-        function setFortuneBet(val) {
-            if (isFortuneSpinning) return;
-            fortuneBet = val;
-            document.querySelectorAll('.fortune-bet-btn').forEach(b => {
-                b.classList.remove('active');
-                if (parseFloat(b.textContent) === val) b.classList.add('active');
-            });
-        }
-
-        function spinFortuneWheel() {
-            if (isFortuneSpinning) return;
-            if (balance < fortuneBet) {
-                document.getElementById('fortune-msg').textContent = "Nedostatek NC pro tuto sázku!";
-                return;
-            }
-
-            updateBalance(-fortuneBet);
-            isFortuneSpinning = true;
-            document.getElementById('fortune-spin-btn').disabled = true;
-            document.getElementById('fortune-msg').textContent = "Kolo se točí...";
-
-            const winIndex = Math.floor(Math.random() * fortuneSlices.length);
-            const sliceDeg = 360 / fortuneSlices.length;
-            
-            const targetDeg = 360 * 5 + (360 - (winIndex * sliceDeg)) - 90;
-            fortuneAngle += targetDeg;
-
-            const canvas = document.getElementById('fortune-canvas');
-            canvas.style.transform = `rotate(${fortuneAngle}deg)`;
-
-            setTimeout(() => {
-                isFortuneSpinning = false;
-                document.getElementById('fortune-spin-btn').disabled = false;
-                const res = fortuneSlices[winIndex];
-                
-                document.getElementById('fortune-center-display').textContent = res.label;
-
-                if (res.mult > 0) {
-                    const winAmt = Math.floor(fortuneBet * res.mult);
-                    updateBalance(winAmt);
-                    document.getElementById('fortune-msg').textContent = `🎉 Výhra ${winAmt} NC (${res.label})!`;
-                } else {
-                    document.getElementById('fortune-msg').textContent = "Padlo 0x. Zkuste to znovu!";
-                }
-            }, 4000);
-        }
-
-        // ==========================================
-        // 6. CYBER MINES (PEVNÉ SÁZKY & ODSTUPŇOVANÉ BOMBY)
+        // 6. CYBER MINES
         // ==========================================
         let minesCount = 3;
         let minesBet = 50;
@@ -1174,7 +1218,6 @@
                 cell.style.borderColor = '#10b981';
                 revealedSafeCount++;
 
-                // MATEMATICKÝ PŘEPOČET NÁSOBITELŮ PODLE POČTU BOMB (10 bomb dává obří násobitele)
                 let baseStep = 1 + (minesCount * 0.15) + (minesCount === 10 ? 0.35 : 0);
                 currentMinesMult = parseFloat((currentMinesMult * baseStep).toFixed(2));
 
@@ -1224,7 +1267,6 @@
         initSlotStrips();
         drawRouletteWheel();
         initRouletteBoard();
-        drawFortuneWheel();
         renderMinesGrid();
     </script>
 </body>
