@@ -45,13 +45,13 @@
 
         footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(0, 242, 255, 0.2); font-size: 0.85rem; color: #64748b; background: rgba(7, 9, 19, 0.95); }
 
-        /* --- AUTOMATY STYLY --- */
+        /* --- AUTOMATY --- */
         .slot-window { width: 100px; height: 130px; overflow: hidden; position: relative; border-radius: 12px; background: rgba(10, 15, 30, 0.9); border: 2px solid #00f2ff; box-shadow: inset 0 0 15px rgba(0,242,255,0.2); }
         .slot-strip { position: absolute; top: 0; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .slot-strip.spinning { filter: blur(4px); }
         .slot-symbol { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
 
-        /* --- LUXUSNÍ DESIGN KARET PRO BLACKJACK --- */
+        /* --- KARTY PRO BLACKJACK --- */
         .card-item-pro { 
             width: 78px; 
             height: 112px; 
@@ -78,7 +78,7 @@
             box-shadow: 0 0 15px rgba(0,242,255,0.4) !important;
         }
 
-        /* --- RULETA STYLY --- */
+        /* --- RULETA --- */
         .roulette-container { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start; }
         .roulette-left { flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; }
         .roulette-right { flex: 1.4; min-width: 320px; }
@@ -105,19 +105,82 @@
         .cell-green { background: #16a34a; color: #fff; }
         .board-chip-badge { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: #00f2ff; color: #000; font-size: 0.65rem; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 6px #00f2ff; z-index: 5; pointer-events: none; }
 
-        /* --- STYLY DOSTIHY --- */
-        .race-track { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.75rem; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; position: relative; }
-        .horse-lane { display: flex; align-items: center; gap: 0.5rem; background: rgba(7, 9, 19, 0.6); padding: 0.5rem; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.05); }
-        .horse-info { width: 140px; text-align: left; font-size: 0.85rem; font-weight: 700; }
-        .horse-track-area { flex: 1; height: 36px; background: rgba(255,255,255,0.03); border-radius: 18px; position: relative; border-right: 4px dashed #ef4444; overflow: hidden; }
-        .horse-avatar { position: absolute; left: 0; top: 50%; transform: translateY(-50%); font-size: 1.6rem; transition: left 0.1s linear; }
+        /* --- VYLEPŠENÝ DESIGN DOSTIHŮ --- */
+        .race-track-pro { 
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 9, 19, 0.95) 100%); 
+            border: 2px solid rgba(0, 242, 255, 0.3); 
+            border-radius: 1rem; 
+            padding: 1.25rem; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.85rem; 
+            margin-bottom: 1.5rem; 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+        .horse-lane-pro { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            background: rgba(15, 23, 42, 0.8); 
+            padding: 0.6rem 0.8rem; 
+            border-radius: 0.75rem; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            position: relative;
+        }
+        .horse-badge { 
+            width: 140px; 
+            text-align: left; 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            display: flex; 
+            flex-direction: column;
+        }
+        .horse-badge span { font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+        .horse-track-bg { 
+            flex: 1; 
+            height: 40px; 
+            background: rgba(0, 0, 0, 0.4); 
+            border-radius: 20px; 
+            position: relative; 
+            border-right: 5px solid #ef4444; 
+            overflow: hidden; 
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+        }
+        .horse-track-finish {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            background: repeating-linear-gradient(45deg, #fff, #fff 5px, #000 5px, #000 10px);
+            opacity: 0.3;
+        }
+        .horse-runner { 
+            position: absolute; 
+            left: 0; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: left 0.08s linear; 
+        }
+        .horse-icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 0 10px currentColor;
+        }
 
-        /* --- STYLY MINES --- */
+        /* --- MINES --- */
         .mines-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: 350px; margin: 0 auto; }
         .mine-cell { aspect-ratio: 1; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: 0.2s; user-select: none; }
         .mine-cell:hover { background: rgba(0, 242, 255, 0.15); border-color: #00f2ff; }
 
-        /* VYSVĚTLUJÍCÍ BOX */
         .guide-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 0.75rem; padding: 1rem; margin-top: 1.5rem; text-align: left; font-size: 0.85rem; color: #94a3b8; }
         .guide-box h4 { color: #00f2ff; font-size: 0.95rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
     </style>
@@ -154,23 +217,28 @@
         <section id="tab-lobby" class="section active">
             <div class="glass-panel neon-box" style="padding: 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
                 <div style="max-width: 600px;">
-                    <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); margin-bottom: 1rem;">Gcasino • Ultimate Race Edition</span>
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); margin-bottom: 1rem;">Gcasino • High Roller Edition</span>
                     <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">Hrajte o <span style="background: linear-gradient(90deg, #00f2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NeonCoins (NC)</span></h1>
-                    <p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 1.05rem;">Vsaďte si na koně v dostizích, vyzkoušejte zcela náhodný Crash nebo roztočte ruletu!</p>
-                    <button onclick="switchTab('racing')" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem; font-size: 1rem;">Jít na Dostihy 🐎</button>
+                    <p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 1.05rem;">Zcela nový Crash s možností obřích násobitelů (až 50x+) a luxusní Cyber Dostihy!</p>
+                    <button onclick="switchTab('crash')" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem; font-size: 1rem;">Hrát Cyber Crash 🚀</button>
                 </div>
                 <div style="font-size: 5rem; padding: 2rem; background: rgba(0,242,255,0.05); border-radius: 1.5rem; border: 1px solid rgba(0,242,255,0.2);">
-                    🐎🎰🚀
+                    🚀🐎🎰
                 </div>
             </div>
 
             <div style="margin-top: 2rem;">
                 <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #00f2ff;">⚡ Výběr her</h2>
                 <div class="grid-cards">
+                    <div class="glass-panel game-card" onclick="switchTab('crash')">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Crash</h3>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">100% náhodná raketová hra s šancí na násobitele 10x, 20x až 50x+!</p>
+                    </div>
                     <div class="glass-panel game-card" onclick="switchTab('racing')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🐎</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Dostihy</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Vsaďte na favorita nebo outsidera a sledujte závod!</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Modernizovaná trať s neónovými efekty a animovanými koni.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('slots')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎰</div>
@@ -180,60 +248,88 @@
                     <div class="glass-panel game-card" onclick="switchTab('blackjack')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🃏</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Blackjack Pro</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Vylepšené luxusní karty v souboji o 21 bodů.</p>
-                    </div>
-                    <div class="glass-panel game-card" onclick="switchTab('crash')">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
-                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Crash</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">100% nezávislý náhodný násobitel bez podvodů.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Luxusní karetní design v napínavém souboji o 21 bodů.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('roulette')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎡</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Neon Roulette</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Fyzicky se točící kolo a sázkový stůl se žetony.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Točící se ruletové kolo a sázky pomocí NC žetonů.</p>
                     </div>
                     <div class="glass-panel game-card" onclick="switchTab('mines')">
                         <div style="font-size: 2.5rem; margin-bottom: 1rem;">💣</div>
                         <h3 style="font-size: 1.1rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.25rem;">Cyber Mines</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">1 až 10 bomb na poli s vysokými odměnami.</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">1 až 10 bomb na poli s extrémně vysokými odměnami.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DOSTIHY (NÁHRADA ZA KOLO ŠTĚSTÍ) -->
+        <!-- DOSTIHY -->
         <section id="tab-racing" class="section">
-            <div class="glass-panel neon-box" style="max-width: 750px; margin: 0 auto; padding: 2rem; text-align: center;">
+            <div class="glass-panel neon-box" style="max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center;">
                 <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🐎 Cyber Dostihy</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Vyberte koně, vsaďte si a sledujte napínavý závod!</p>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Vyberte koně, vsaďte si a sledujte závod na osvětlené trati!</p>
 
-                <!-- Dostihová dráha -->
-                <div class="race-track">
-                    <div class="horse-lane">
-                        <div class="horse-info" style="color: #3b82f6;">1. Blesk (2.0x)</div>
-                        <div class="horse-track-area"><div id="horse-avatar-0" class="horse-avatar">🐎</div></div>
+                <!-- Vylepšená dostihová dráha -->
+                <div class="race-track-pro">
+                    <div class="horse-lane-pro">
+                        <div class="horse-badge" style="color: #3b82f6;">1. Blesk <span>Kurz 2.0x</span></div>
+                        <div class="horse-track-bg">
+                            <div class="horse-track-finish"></div>
+                            <div id="horse-avatar-0" class="horse-runner">
+                                <div class="horse-icon-box" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6;">🐎</div>
+                                <span id="horse-pct-0" style="font-size: 0.7rem; font-weight: bold; color: #3b82f6;">0%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="horse-lane">
-                        <div class="horse-info" style="color: #10b981;">2. Vichr (3.5x)</div>
-                        <div class="horse-track-area"><div id="horse-avatar-1" class="horse-avatar">🐎</div></div>
+
+                    <div class="horse-lane-pro">
+                        <div class="horse-badge" style="color: #10b981;">2. Vichr <span>Kurz 3.5x</span></div>
+                        <div class="horse-track-bg">
+                            <div class="horse-track-finish"></div>
+                            <div id="horse-avatar-1" class="horse-runner">
+                                <div class="horse-icon-box" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981;">🐎</div>
+                                <span id="horse-pct-1" style="font-size: 0.7rem; font-weight: bold; color: #10b981;">0%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="horse-lane">
-                        <div class="horse-info" style="color: #f59e0b;">3. Furia (5.0x)</div>
-                        <div class="horse-track-area"><div id="horse-avatar-2" class="horse-avatar">🐎</div></div>
+
+                    <div class="horse-lane-pro">
+                        <div class="horse-badge" style="color: #f59e0b;">3. Furia <span>Kurz 5.0x</span></div>
+                        <div class="horse-track-bg">
+                            <div class="horse-track-finish"></div>
+                            <div id="horse-avatar-2" class="horse-runner">
+                                <div class="horse-icon-box" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b;">🐎</div>
+                                <span id="horse-pct-2" style="font-size: 0.7rem; font-weight: bold; color: #f59e0b;">0%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="horse-lane">
-                        <div class="horse-info" style="color: #ec4899;">4. Phantom (8.0x)</div>
-                        <div class="horse-track-area"><div id="horse-avatar-3" class="horse-avatar">🐎</div></div>
+
+                    <div class="horse-lane-pro">
+                        <div class="horse-badge" style="color: #ec4899;">4. Phantom <span>Kurz 8.0x</span></div>
+                        <div class="horse-track-bg">
+                            <div class="horse-track-finish"></div>
+                            <div id="horse-avatar-3" class="horse-runner">
+                                <div class="horse-icon-box" style="background: rgba(236, 72, 153, 0.2); color: #ec4899; border: 1px solid #ec4899;">🐎</div>
+                                <span id="horse-pct-3" style="font-size: 0.7rem; font-weight: bold; color: #ec4899;">0%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="horse-lane">
-                        <div class="horse-info" style="color: #a855f7;">5. Titan (15.0x)</div>
-                        <div class="horse-track-area"><div id="horse-avatar-4" class="horse-avatar">🐎</div></div>
+
+                    <div class="horse-lane-pro">
+                        <div class="horse-badge" style="color: #a855f7;">5. Titan <span>Kurz 15.0x</span></div>
+                        <div class="horse-track-bg">
+                            <div class="horse-track-finish"></div>
+                            <div id="horse-avatar-4" class="horse-runner">
+                                <div class="horse-icon-box" style="background: rgba(168, 85, 247, 0.2); color: #a855f7; border: 1px solid #a855f7;">🐎</div>
+                                <span id="horse-pct-4" style="font-size: 0.7rem; font-weight: bold; color: #a855f7;">0%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div id="race-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte koně, vsaďte a odstartujte závod</div>
 
-                <!-- Výběr koně -->
                 <div style="margin-bottom: 1rem;">
                     <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Vybraný kůň:</div>
                     <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
@@ -245,7 +341,6 @@
                     </div>
                 </div>
 
-                <!-- Pevné sázky -->
                 <div style="margin-bottom: 1.5rem;">
                     <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Sázka (NC):</div>
                     <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
@@ -260,7 +355,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hrají Dostihy:</h4>
-                    Zvolte jednoho z 5 koní. Koně s nižším kurzem (jako Blesk 2x) vyhrávají častěji, zatiaľ čo outsider (Titan 15x) má nižší šanci, ale přináší obří výhru. Klikněte na **ODSTARTAT ZÁVOD** a sledujte, který kůň doběhne do cíle jako první!
+                    Sledujte běžící koně na osvětlené trati. Každý kůň má jiný výherní kurz podle své šance na výhru. Kdo dosáhne šachovnicové vlajky jako první, vyhrává!
                 </div>
             </div>
         </section>
@@ -298,7 +393,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hrají Automaty:</h4>
-                    Zvolte sázku od 0.5 do 50 NC a roztáčejte. 3 stejné symboly dávají až 25x sázky (diamanty), dvojice vrátí 1.5x sázky.
+                    Zvolte sázku od 0.5 do 50 NC. 3 stejné symboly dají až 25x sázky (diamanty), jakákoliv dvojice vrátí 1.5x sázky.
                 </div>
             </div>
         </section>
@@ -343,7 +438,7 @@
 
                 <div class="guide-box">
                     <h4>📖 Jak se hraje Blackjack:</h4>
-                    Mějte součet karet bližší 21 než krupiér. **HIT** přidá kartu, **STAND** předá tah krupiérovi.
+                    Cílem je mít součet karet bližší 21 než krupiér. **HIT** přidá kartu, **STAND** předá hra krupiérovi.
                 </div>
             </div>
         </section>
@@ -352,7 +447,7 @@
         <section id="tab-crash" class="section">
             <div class="glass-panel neon-box" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
                 <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🚀 Cyber Crash</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Zcela náhodný bod exploze. Vyberte včas výhru!</p>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Obří násobitele! Vyberte výhru dříve, než raketa vybuchne.</p>
 
                 <div class="glass-panel neon-box" style="height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative;">
                     <div id="crash-multiplier" style="font-size: 3.5rem; font-weight: 900; color: #00f2ff;" class="neon-glow">1.00x</div>
@@ -369,7 +464,7 @@
                             <span style="font-size: 0.85rem; color: #94a3b8;">NC</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="font-size: 0.85rem; color: #94a3b8;">Auto Cashout (x):</span>
+                            <span style="font-size: 0.85rem; color: #94a3b8;">Auto-výběr (x):</span>
                             <input type="number" id="crash-auto-target" placeholder="Vypnuto" step="0.1" min="1.01" style="width: 100px; text-align: center;">
                         </div>
                     </div>
@@ -377,12 +472,12 @@
 
                 <div style="display: flex; justify-content: center;">
                     <button onclick="startCrash()" id="crash-start-btn" class="neon-button" style="padding: 0.75rem 2.5rem; border-radius: 0.75rem;">START</button>
-                    <button onclick="cashOutCrash()" id="crash-cashout-btn" style="display: none; background: #10b981; color: #000; font-weight: 800; padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">VYBRAT VÝHRU (CASH OUT)</button>
+                    <button onclick="cashOutCrash()" id="crash-cashout-btn" style="display: none; background: #10b981; color: #000; font-weight: 800; padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">VYBRAT VÝHRU</button>
                 </div>
 
                 <div class="guide-box">
                     <h4>📖 Jak se hraje Cyber Crash:</h4>
-                    Systém vygeneruje **100% náhodné číslo**, které nevychází z vaší sázky. Násobitel může spadnout ihned na 1.01x, nebo vyletět vysoko nad 10x. Můžete nastavit Auto Cashout nebo vybírat manuálně.
+                    Systém vygeneruje **zcela náhodné číslo**, které není ničím ovlivněno. Hra může padnout brzy, nebo vyletět nad **10x, 20x až 50x+**. Zadejte hranici pro Auto-výběr nebo stiskněte tlačítko v průběhu letu!
                 </div>
             </div>
         </section>
@@ -466,12 +561,12 @@
 
                 <div style="display: flex; justify-content: center;">
                     <button onclick="startMines()" id="mines-start-btn" class="neon-button" style="padding: 0.75rem 2.5rem; border-radius: 0.75rem;">START HRY</button>
-                    <button onclick="cashOutMines()" id="mines-cashout-btn" style="display: none; background: #10b981; color: #000; font-weight: 800; padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">VYBRAT VÝHRU (CASH OUT)</button>
+                    <button onclick="cashOutMines()" id="mines-cashout-btn" style="display: none; background: #10b981; color: #000; font-weight: 800; padding: 0.75rem 2.5rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);">VYBRAT VÝHRU</button>
                 </div>
 
                 <div class="guide-box">
                     <h4>📖 Jak se hrají Cyber Mines:</h4>
-                    Více bomb znamená mnohonásobně vyšší odměny za každé odkryté políčko. Můžete kdykoliv bezpečně odejít stisknutím Vybrat výhru.
+                    Více bomb znamená mnohonásobně vyšší odměny za každé odkryté políčko. Můžete kdykoliv bezpečně odejít stisknutím tlačítka Vybrat výhru.
                 </div>
             </div>
         </section>
@@ -543,9 +638,8 @@
             updateBalance(-raceBet);
             isRaceRunning = true;
             document.getElementById('race-start-btn').disabled = true;
-            document.getElementById('race-msg').textContent = "🏁 Závod odstartoval! Koně běží...";
+            document.getElementById('race-msg').textContent = "🏁 Závod odstartoval! Koně běží v plném nasazení...";
 
-            // Vypočítat vítěze na základě pravděpodobnosti (váhy)
             let totalWeight = horses.reduce((acc, h) => acc + h.weight, 0);
             let rnd = Math.random() * totalWeight;
             let winnerIndex = 0;
@@ -558,19 +652,18 @@
                 rnd -= horses[i].weight;
             }
 
-            // Animace běhu koní
             let positions = [0, 0, 0, 0, 0];
             let interval = setInterval(() => {
                 let finished = false;
 
                 for (let i = 0; i < 5; i++) {
-                    // Vítězný kůň má o něco vyšší průměrnou rychlost
-                    let speed = (Math.random() * 2.5) + (i === winnerIndex ? 1.2 : 0.6);
-                    positions[i] = Math.min(92, positions[i] + speed);
+                    let speed = (Math.random() * 2.8) + (i === winnerIndex ? 1.3 : 0.7);
+                    positions[i] = Math.min(88, positions[i] + speed);
 
                     document.getElementById('horse-avatar-' + i).style.left = positions[i] + '%';
+                    document.getElementById('horse-pct-' + i).textContent = Math.floor((positions[i] / 88) * 100) + '%';
 
-                    if (positions[i] >= 92) {
+                    if (positions[i] >= 88) {
                         finished = true;
                     }
                 }
@@ -579,7 +672,7 @@
                     clearInterval(interval);
                     finishRace(winnerIndex);
                 }
-            }, 80);
+            }, 70);
         }
 
         function finishRace(winnerIdx) {
@@ -595,12 +688,12 @@
                 document.getElementById('race-msg').textContent = `Závod vyhrál ${winner.name}. Vaše sázka prohrála.`;
             }
 
-            // Reset pozic po pauze
             setTimeout(() => {
                 for (let i = 0; i < 5; i++) {
                     document.getElementById('horse-avatar-' + i).style.left = '0%';
+                    document.getElementById('horse-pct-' + i).textContent = '0%';
                 }
-            }, 3000);
+            }, 3500);
         }
 
         // ==========================================
@@ -700,7 +793,7 @@
         }
 
         // ==========================================
-        // 3. BLACKJACK PRO (LUXUSNÍ KARTY)
+        // 3. BLACKJACK PRO
         // ==========================================
         let bjBet = 100;
         let deck = [];
@@ -852,7 +945,7 @@
         }
 
         // ==========================================
-        // 4. CYBER CRASH (100% NÁHODNÝ ALGORITMUS)
+        // 4. CYBER CRASH (OBŘÍ NÁSOBITELE AŽ 50X+)
         // ==========================================
         let crashBet = 100;
         let crashInterval = null;
@@ -879,16 +972,18 @@
             crashActive = true;
             currentMultiplier = 1.00;
             
-            // ČISTO NÁHODNÉ GENEROVÁNÍ CRASH POINTU (zcela nezávislé na sázce)
-            let rnd = Math.random();
-            if (rnd < 0.25) {
-                crashPoint = parseFloat((1.01 + Math.random() * 0.45).toFixed(2)); // 1.01x - 1.46x
-            } else if (rnd < 0.65) {
-                crashPoint = parseFloat((1.47 + Math.random() * 1.53).toFixed(2)); // 1.47x - 3.00x
-            } else if (rnd < 0.90) {
-                crashPoint = parseFloat((3.01 + Math.random() * 3.99).toFixed(2)); // 3.01x - 7.00x
+            // BEZPEČNÝ A FÉR NÁHODNÝ ALGORITMUS S MOŽNOSTÍ EXTRÉMNÍCH NÁSOBITELŮ
+            let r = Math.random();
+            if (r < 0.20) {
+                crashPoint = parseFloat((1.01 + Math.random() * 0.49).toFixed(2)); // 1.01x - 1.50x
+            } else if (r < 0.55) {
+                crashPoint = parseFloat((1.51 + Math.random() * 1.49).toFixed(2)); // 1.51x - 3.00x
+            } else if (r < 0.80) {
+                crashPoint = parseFloat((3.01 + Math.random() * 4.99).toFixed(2)); // 3.01x - 8.00x
+            } else if (r < 0.95) {
+                crashPoint = parseFloat((8.01 + Math.random() * 11.99).toFixed(2)); // 8.01x - 20.00x
             } else {
-                crashPoint = parseFloat((7.01 + Math.random() * 13.00).toFixed(2)); // 7.01x - 20.00x
+                crashPoint = parseFloat((20.01 + Math.random() * 35.00).toFixed(2)); // 20.01x - 55.00x!
             }
 
             document.getElementById('crash-multiplier').textContent = "1.00x";
@@ -897,7 +992,8 @@
             document.getElementById('crash-cashout-btn').style.display = 'inline-block';
 
             crashInterval = setInterval(() => {
-                currentMultiplier = parseFloat((currentMultiplier + 0.02).toFixed(2));
+                let speedStep = currentMultiplier > 5 ? 0.08 : 0.02;
+                currentMultiplier = parseFloat((currentMultiplier + speedStep).toFixed(2));
                 document.getElementById('crash-multiplier').textContent = currentMultiplier.toFixed(2) + 'x';
 
                 if (autoTarget > 1.0 && currentMultiplier >= autoTarget && currentMultiplier < crashPoint) {
@@ -909,7 +1005,7 @@
                     clearInterval(crashInterval);
                     crashCrash();
                 }
-            }, 70);
+            }, 60);
         }
 
         function cashOutCrash() {
