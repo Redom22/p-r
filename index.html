@@ -13,7 +13,7 @@
         .neon-button:hover { box-shadow: 0 0 30px rgba(0, 242, 255, 0.8); transform: translateY(-2px); }
         .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 1rem; }
         
-        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid rgba(0, 242, 255, 0.2); position: sticky; top: 0; z-index: 50; background: rgba(7, 9, 19, 0.95); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid rgba(0, 242, 255, 0.2); position: sticky; top: 0; z-index: 50; background: rgba(7, 9, 19, 0.95); flex-wrap: wrap; gap: 1rem; }
         .logo { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
         .logo-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #00f2ff, #3b82f6); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem; color: #000; box-shadow: 0 0 15px rgba(0,242,255,0.4); }
         .logo-text { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg, #00f2ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -23,7 +23,7 @@
         .tab-btn:hover { color: #fff; background: rgba(59, 130, 246, 0.1); }
         .tab-btn.active { background: rgba(0, 242, 255, 0.15); border-color: #00f2ff; color: #00f2ff; box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
 
-        .user-box { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 1rem; cursor: pointer; }
+        .user-box { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 0.75rem; transition: 0.2s; }
         .user-box:hover { border-color: rgba(0, 242, 255, 0.5); }
 
         main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 2rem 1rem; }
@@ -37,14 +37,21 @@
         .btn-glass { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; padding: 0.5rem 1rem; border-radius: 0.75rem; cursor: pointer; font-family: inherit; font-weight: 600; transition: 0.2s; }
         .btn-glass:hover { background: rgba(0, 242, 255, 0.1); }
 
-        input[type="text"] { width: 100%; padding: 0.75rem 1rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.75rem; color: #fff; font-family: inherit; }
-        input[type="text"]:focus { outline: none; border-color: #00f2ff; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 0.75rem 1rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.75rem; color: #fff; font-family: inherit; }
+        input[type="text"]:focus, input[type="number"]:focus { outline: none; border-color: #00f2ff; }
 
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 1rem; }
         .modal.active { display: flex; }
-        .modal-content { max-width: 420px; width: 100%; padding: 2rem; }
+        .modal-content { max-width: 420px; width: 100%; padding: 2rem; position: relative; }
 
         footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(0, 242, 255, 0.2); font-size: 0.85rem; color: #64748b; background: rgba(7, 9, 19, 0.95); }
+
+        .card-item { width: 45px; height: 65px; background: #fff; color: #000; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; padding: 4px; font-size: 0.85rem; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .card-red { color: #dc2626; }
+        
+        .mines-grid-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; max-width: 350px; margin: 0 auto; }
+        .mine-cell { aspect-ratio: 1; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+        .mine-cell:hover { background: rgba(0, 242, 255, 0.15); border-color: #00f2ff; }
     </style>
 </head>
 <body>
@@ -69,7 +76,7 @@
         <div class="glass-panel user-box" onclick="openAccountModal()">
             <div style="text-align: right;">
                 <div id="header-username" style="font-size: 0.75rem; color: #00f2ff; font-weight: 600;">Hráč</div>
-                <div style="font-size: 0.9rem; font-weight: 700;"><span id="header-balance">0</span> NC</div>
+                <div style="font-size: 0.9rem; font-weight: 700;"><span id="header-balance">1000</span> NC</div>
             </div>
             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(0,242,255,0.2); border: 1px solid #00f2ff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">👤</div>
         </div>
@@ -79,7 +86,7 @@
     <main>
 
         <!-- LOBBY -->
-        <section id="tab-lobby" class="section active" style="display: block;">
+        <section id="tab-lobby" class="section active">
             <div class="glass-panel neon-box" style="padding: 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
                 <div style="max-width: 600px;">
                     <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.3); margin-bottom: 1rem;">Gcasino • Plně funkční verze</span>
@@ -172,7 +179,7 @@
                         <span>Krupiér</span>
                         <span>Skóre: <span id="dealer-score">-</span></span>
                     </div>
-                    <div id="dealer-cards" style="display: flex; gap: 0.5rem; min-height: 60px;"></div>
+                    <div id="dealer-cards" style="display: flex; gap: 0.5rem; min-height: 70px;"></div>
                 </div>
 
                 <div class="glass-panel" style="padding: 1rem; margin-bottom: 1.5rem;">
@@ -180,12 +187,12 @@
                         <span>Hráč (<span id="bj-username"></span>)</span>
                         <span>Skóre: <span id="player-score">-</span></span>
                     </div>
-                    <div id="player-cards" style="display: flex; gap: 0.5rem; min-height: 60px;"></div>
+                    <div id="player-cards" style="display: flex; gap: 0.5rem; min-height: 70px;"></div>
                 </div>
 
                 <div id="bj-msg" style="text-align: center; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vsaďte a začněte hru</div>
 
-                <div id="bj-controls-bet" style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                <div id="bj-controls-bet" style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
                     <button onclick="adjustBjBet(-50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">-</button>
                     <span id="bj-bet" style="font-weight: 700; color: #00f2ff; width: 50px; text-align: center;">100</span> NC
                     <button onclick="adjustBjBet(50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">+</button>
@@ -235,13 +242,6 @@
 
                 <div id="roulette-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte barvu sázky</div>
 
-                <div style="display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
                     <button onclick="setRouletteColor('red')" id="btn-bet-red" style="padding: 0.75rem 1.25rem; border-radius: 0.75rem; font-weight: 700; background: rgba(220, 38, 38, 0.3); border: 1px solid #dc2626; color: #fca5a5; cursor: pointer;">Červená (2x)</button>
-                    <button onclick="setRouletteColor('green')" id="btn-bet-green" style="padding: 0.75rem 1.25rem; border-radius: 0.75rem; font-weight: 700; background: rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color: #6ee7b7; cursor: pointer;">Zelená (14x)</button>
-                    <button onclick="setRouletteColor('black')" id="btn-bet-black" style="padding: 0.75rem 1.25rem; border-radius: 0.75rem; font-weight: 700; background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; color: #cbd5e1; cursor: pointer;">Černá (2x)</button>
-                </div>
-
-                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 0.85rem; color: #94a3b8;">Sázka:</span>
-                        <button onclick="adjustRouletteBet(-50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">-<
+                    <button onclick="setR
