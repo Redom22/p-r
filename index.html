@@ -244,4 +244,615 @@
 
                 <div id="roulette-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vyberte barvu sázky</div>
 
-                <div style="display: fle
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <button onclick="setRouletteColor('red')" id="roulette-btn-red" class="roulette-color-btn btn-glass" style="border-color: #00f2ff; background: rgba(220,38,38,0.2); color: #f8fafc; padding: 0.75rem 1.5rem;">Červená (2x)</button>
+                    <button onclick="setRouletteColor('black')" id="roulette-btn-black" class="roulette-color-btn btn-glass" style="background: rgba(15,23,42,0.9); color: #f8fafc; padding: 0.75rem 1.5rem;">Černá (2x)</button>
+                    <button onclick="setRouletteColor('green')" id="roulette-btn-green" class="roulette-color-btn btn-glass" style="background: rgba(16,185,129,0.2); color: #f8fafc; padding: 0.75rem 1.5rem;">Zelená (14x)</button>
+                </div>
+
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Sázka:</span>
+                        <button onclick="adjustRouletteBet(-50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">-</button>
+                        <span id="roulette-bet" style="font-weight: 700; color: #00f2ff; width: 50px; text-align: center;">50</span>
+                        <button onclick="adjustRouletteBet(50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">+</button>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">NC</span>
+                    </div>
+                    <button onclick="spinRoulette()" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem;">ROZTOČIT</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- KOSTKY -->
+        <section id="tab-dice" class="section">
+            <div class="glass-panel neon-box" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+                <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">🎲 Cyber Dice</h2>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Nastavte šanci a házejte (1-100)!</p>
+
+                <div class="glass-panel neon-box" style="padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <div id="dice-result" style="font-size: 3rem; font-weight: 900; color: #00f2ff; margin-bottom: 0.5rem;">50</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem;">Cílová hodnota: <span id="dice-target-val" style="color: #00f2ff; font-weight: bold;">50</span></div>
+                    <input type="range" min="1" max="99" value="50" oninput="updateDiceTarget(this.value)" style="width: 100%; accent-color: #00f2ff; cursor: pointer;">
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <button onclick="setDiceCondition('over')" id="dice-cond-over" class="btn-glass" style="border-color: #00f2ff; background: rgba(0,242,255,0.3);">Vyšší (&gt;)</button>
+                    <button onclick="setDiceCondition('under')" id="dice-cond-under" class="btn-glass">Nižší (&lt;)</button>
+                </div>
+
+                <div id="dice-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Připraveno ke hře</div>
+
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Sázka:</span>
+                        <button onclick="adjustDiceBet(-50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">-</button>
+                        <span id="dice-bet" style="font-weight: 700; color: #00f2ff; width: 50px; text-align: center;">50</span>
+                        <button onclick="adjustDiceBet(50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">+</button>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">NC</span>
+                    </div>
+                    <button onclick="rollDice()" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem;">HÁZET</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MINES -->
+        <section id="tab-mines" class="section">
+            <div class="glass-panel neon-box" style="max-width: 600px; margin: 0 auto; padding: 2rem; text-align: center;">
+                <h2 style="font-size: 1.75rem; font-weight: 700; color: #00f2ff; margin-bottom: 0.5rem;">💣 Cyber Mines</h2>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Odkrývejte diamanty a vyhněte se minám!</p>
+
+                <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <span style="font-size: 0.85rem; color: #94a3b8; align-self: center;">Počet min:</span>
+                    <button onclick="setMinesCount(1)" id="mines-cnt-1" class="mines-count-btn btn-glass" style="padding: 0.25rem 0.75rem;">1</button>
+                    <button onclick="setMinesCount(3)" id="mines-cnt-3" class="mines-count-btn btn-glass" style="border-color: #00f2ff; padding: 0.25rem 0.75rem;">3</button>
+                    <button onclick="setMinesCount(5)" id="mines-cnt-5" class="mines-count-btn btn-glass" style="padding: 0.25rem 0.75rem;">5</button>
+                    <button onclick="setMinesCount(10)" id="mines-cnt-10" class="mines-count-btn btn-glass" style="padding: 0.25rem 0.75rem;">10</button>
+                </div>
+
+                <div id="mines-grid" class="mines-grid-container" style="margin-bottom: 1.5rem;">
+                    <!-- Generováno dynamicky -->
+                </div>
+
+                <div id="mines-msg" style="height: 1.5rem; font-weight: 600; color: #00f2ff; margin-bottom: 1.5rem;">Vsaďte a spusťte hru</div>
+
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Sázka:</span>
+                        <button onclick="adjustMinesBet(-50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">-</button>
+                        <span id="mines-bet" style="font-weight: 700; color: #00f2ff; width: 50px; text-align: center;">50</span>
+                        <button onclick="adjustMinesBet(50)" class="btn-glass" style="padding: 0.25rem 0.75rem;">+</button>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">NC</span>
+                    </div>
+                    <button onclick="startMines()" id="mines-start-btn" class="neon-button" style="padding: 0.75rem 2rem; border-radius: 0.75rem;">START</button>
+                    <button onclick="cashOutMines()" id="mines-cashout-btn" style="display: none; background: #10b981; color: #000; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);">CASH OUT</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ACCOUNT MODAL -->
+    <div id="account-modal" class="modal">
+        <div class="glass-panel neon-box modal-content">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: #00f2ff; margin-bottom: 1rem;">⚙️ Správa účtu</h2>
+            <div style="margin-bottom: 1rem;">
+                <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 0.25rem;">Uživatelské jméno:</label>
+                <input type="text" id="modal-username" value="Hráč">
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 0.25rem;">Rychlé dobití NC:</label>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button onclick="deposit(500)" class="btn-glass">+500 NC</button>
+                    <button onclick="deposit(1000)" class="btn-glass">+1 000 NC</button>
+                    <button onclick="deposit(5000)" class="btn-glass">+5 000 NC</button>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                <button onclick="closeAccountModal()" class="btn-glass">Zrušit</button>
+                <button onclick="saveAccount()" class="neon-button" style="padding: 0.5rem 1.5rem; border-radius: 0.75rem;">Uložit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZÁPATÍ -->
+    <footer>
+        &copy; 2026 Gcasino. Všechna práva vyhrazena. Pouze pro zábavní účely.
+    </footer>
+
+    <script>
+        let balance = 1000;
+        let username = "Hráč";
+
+        function updateBalance(amount) {
+            balance += amount;
+            document.getElementById('header-balance').textContent = balance;
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const navBtn = document.getElementById('nav-' + tabId);
+            if (navBtn) navBtn.classList.add('active');
+        }
+
+        function openAccountModal() {
+            document.getElementById('account-modal').classList.add('active');
+            document.getElementById('modal-username').value = username;
+        }
+
+        function closeAccountModal() {
+            document.getElementById('account-modal').classList.remove('active');
+        }
+
+        function saveAccount() {
+            const nameInput = document.getElementById('modal-username').value.trim();
+            if (nameInput) {
+                username = nameInput;
+                document.getElementById('header-username').textContent = username;
+                document.getElementById('bj-username').textContent = username;
+            }
+            closeAccountModal();
+        }
+
+        function deposit(amount) {
+            updateBalance(amount);
+        }
+
+        // --- SLOTS ---
+        let slotBet = 50;
+        function adjustSlotBet(amount) {
+            slotBet = Math.max(10, slotBet + amount);
+            document.getElementById('slot-bet').textContent = slotBet;
+        }
+
+        function spinSlots() {
+            if (balance < slotBet) {
+                document.getElementById('slot-msg').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-slotBet);
+            const symbols = ['💎', '7️⃣', '⭐', '🍒', '🍋', '🔔'];
+            const s1 = symbols[Math.floor(Math.random() * symbols.length)];
+            const s2 = symbols[Math.floor(Math.random() * symbols.length)];
+            const s3 = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            document.getElementById('slot-1').textContent = s1;
+            document.getElementById('slot-2').textContent = s2;
+            document.getElementById('slot-3').textContent = s3;
+            
+            if (s1 === s2 && s2 === s3) {
+                let win = slotBet * 10;
+                updateBalance(win);
+                document.getElementById('slot-msg').textContent = `JACKPOT! Vyhráli jste ${win} NC!`;
+            } else if (s1 === s2 || s2 === s3 || s1 === s3) {
+                let win = slotBet * 2;
+                updateBalance(win);
+                document.getElementById('slot-msg').textContent = `Výhra! Získali jste ${win} NC.`;
+            } else {
+                document.getElementById('slot-msg').textContent = "Zkuste to znovu!";
+            }
+        }
+
+        // --- BLACKJACK ---
+        let bjBet = 100;
+        let deck = [];
+        let dealerCards = [];
+        let playerCards = [];
+        let bjGameActive = false;
+
+        function adjustBjBet(amount) {
+            if (bjGameActive) return;
+            bjBet = Math.max(10, bjBet + amount);
+            document.getElementById('bj-bet').textContent = bjBet;
+            document.getElementById('bj-bet-display').textContent = bjBet;
+        }
+
+        function createDeck() {
+            const suits = ['♠', '♥', '♦', '♣'];
+            const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+            let d = [];
+            for (let s of suits) {
+                for (let v of values) {
+                    d.push({ suit: s, val: v });
+                }
+            }
+            for (let i = d.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [d[i], d[j]] = [d[j], d[i]];
+            }
+            return d;
+        }
+
+        function getCardVal(val) {
+            if (['J', 'Q', 'K'].includes(val)) return 10;
+            if (val === 'A') return 11;
+            return parseInt(val);
+        }
+
+        function calculateScore(cards) {
+            let score = 0;
+            let aces = 0;
+            for (let c of cards) {
+                score += getCardVal(c.val);
+                if (c.val === 'A') aces++;
+            }
+            while (score > 21 && aces > 0) {
+                score -= 10;
+                aces--;
+            }
+            return score;
+        }
+
+        function renderCards(cards, containerId, hideFirst = false) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            cards.forEach((c, index) => {
+                const div = document.createElement('div');
+                div.className = 'card-item';
+                if (['♥', '♦'].includes(c.suit)) div.classList.add('card-red');
+                if (hideFirst && index === 0) {
+                    div.style.background = '#3b82f6';
+                    div.style.color = '#fff';
+                    div.innerHTML = '<div style="margin: auto; font-size: 1.2rem;">?</div>';
+                } else {
+                    div.innerHTML = `<div>${c.val}</div><div style="font-size: 1.2rem; text-align: center;">${c.suit}</div><div style="text-align: right;">${c.val}</div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function startBlackjack() {
+            if (balance < bjBet) {
+                document.getElementById('bj-msg').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-bjBet);
+            bjGameActive = true;
+            deck = createDeck();
+            dealerCards = [deck.pop(), deck.pop()];
+            playerCards = [deck.pop(), deck.pop()];
+
+            renderCards(dealerCards, 'dealer-cards', true);
+            renderCards(playerCards, 'player-cards');
+
+            document.getElementById('dealer-score').textContent = '?';
+            document.getElementById('player-score').textContent = calculateScore(playerCards);
+            document.getElementById('bj-msg').textContent = "Hra probíhá. Zvolte Hit nebo Stand.";
+
+            document.getElementById('bj-controls-bet').style.display = 'none';
+            document.getElementById('bj-controls-play').style.display = 'flex';
+
+            if (calculateScore(playerCards) === 21) {
+                bjStand();
+            }
+        }
+
+        function bjHit() {
+            if (!bjGameActive) return;
+            playerCards.push(deck.pop());
+            renderCards(playerCards, 'player-cards');
+            const pScore = calculateScore(playerCards);
+            document.getElementById('player-score').textContent = pScore;
+
+            if (pScore > 21) {
+                endBlackjack("Přesáhli jste 21! Krupiér vyhrává.");
+            } else if (pScore === 21) {
+                bjStand();
+            }
+        }
+
+        function bjStand() {
+            if (!bjGameActive) return;
+            renderCards(dealerCards, 'dealer-cards', false);
+            let dScore = calculateScore(dealerCards);
+            document.getElementById('dealer-score').textContent = dScore;
+
+            while (dScore < 17) {
+                dealerCards.push(deck.pop());
+                renderCards(dealerCards, 'dealer-cards', false);
+                dScore = calculateScore(dealerCards);
+                document.getElementById('dealer-score').textContent = dScore;
+            }
+
+            const pScore = calculateScore(playerCards);
+
+            if (dScore > 21) {
+                let win = bjBet * 2;
+                updateBalance(win);
+                endBlackjack(`Krupiér přesáhl 21! Vyhráli jste ${win} NC.`);
+            } else if (pScore > dScore) {
+                let win = bjBet * 2;
+                updateBalance(win);
+                endBlackjack(`Vyhráli jste ${win} NC!`);
+            } else if (pScore < dScore) {
+                endBlackjack("Krupiér vyhrává.");
+            } else {
+                updateBalance(bjBet);
+                endBlackjack("Remíza! Sázka vrácena.");
+            }
+        }
+
+        function endBlackjack(msg) {
+            bjGameActive = false;
+            document.getElementById('bj-msg').textContent = msg;
+            document.getElementById('bj-controls-bet').style.display = 'flex';
+            document.getElementById('bj-controls-play').style.display = 'none';
+        }
+
+        // --- CRASH ---
+        let crashBet = 100;
+        let crashInterval = null;
+        let currentMultiplier = 1.00;
+        let crashPoint = 1.00;
+        let crashActive = false;
+
+        function adjustCrashBet(amount) {
+            if (crashActive) return;
+            crashBet = Math.max(10, crashBet + amount);
+            document.getElementById('crash-bet').textContent = crashBet;
+        }
+
+        function startCrash() {
+            if (balance < crashBet) {
+                document.getElementById('crash-status').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-crashBet);
+            crashActive = true;
+            currentMultiplier = 1.00;
+            crashPoint = parseFloat((1.1 + Math.random() * 4).toFixed(2));
+            if (Math.random() < 0.3) crashPoint = parseFloat((5 + Math.random() * 10).toFixed(2));
+
+            document.getElementById('crash-multiplier').textContent = "1.00x";
+            document.getElementById('crash-status').textContent = "Raketa letí...";
+            document.getElementById('crash-start-btn').style.display = 'none';
+            document.getElementById('crash-cashout-btn').style.display = 'inline-block';
+
+            crashInterval = setInterval(() => {
+                currentMultiplier = parseFloat((currentMultiplier + 0.05).toFixed(2));
+                document.getElementById('crash-multiplier').textContent = currentMultiplier.toFixed(2) + 'x';
+
+                if (currentMultiplier >= crashPoint) {
+                    clearInterval(crashInterval);
+                    crashCrash();
+                }
+            }, 100);
+        }
+
+        function cashOutCrash() {
+            if (!crashActive) return;
+            clearInterval(crashInterval);
+            crashActive = false;
+            const win = Math.floor(crashBet * currentMultiplier);
+            updateBalance(win);
+            document.getElementById('crash-status').textContent = `Úspěšný Cash Out! Výhra ${win} NC (${currentMultiplier.toFixed(2)}x)`;
+            document.getElementById('crash-start-btn').style.display = 'inline-block';
+            document.getElementById('crash-cashout-btn').style.display = 'none';
+        }
+
+        function crashCrash() {
+            crashActive = false;
+            document.getElementById('crash-status').textContent = `CRASH! Raketa explodovala na ${crashPoint.toFixed(2)}x`;
+            document.getElementById('crash-start-btn').style.display = 'inline-block';
+            document.getElementById('crash-cashout-btn').style.display = 'none';
+        }
+
+        // --- ROULETTE ---
+        let rouletteBet = 50;
+        let selectedRouletteColor = 'red';
+
+        function adjustRouletteBet(amount) {
+            rouletteBet = Math.max(10, rouletteBet + amount);
+            document.getElementById('roulette-bet').textContent = rouletteBet;
+        }
+
+        function setRouletteColor(color) {
+            selectedRouletteColor = color;
+            document.querySelectorAll('.roulette-color-btn').forEach(btn => btn.style.borderColor = 'rgba(0, 242, 255, 0.3)');
+            document.getElementById('roulette-btn-' + color).style.borderColor = '#00f2ff';
+        }
+
+        function spinRoulette() {
+            if (balance < rouletteBet) {
+                document.getElementById('roulette-msg').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-rouletteBet);
+            document.getElementById('roulette-msg').textContent = "Ruleta se točí...";
+            const wheel = document.getElementById('roulette-wheel');
+            wheel.style.transform = `rotate(${360 * 5 + Math.random() * 360}deg)`;
+
+            setTimeout(() => {
+                const rand = Math.random();
+                let resultColor = 'red';
+                let multiplier = 2;
+                if (rand < 0.05) {
+                    resultColor = 'green';
+                    multiplier = 14;
+                } else if (rand < 0.525) {
+                    resultColor = 'red';
+                } else {
+                    resultColor = 'black';
+                }
+
+                if (resultColor === selectedRouletteColor || (selectedRouletteColor === 'green' && resultColor === 'green')) {
+                    const win = rouletteBet * multiplier;
+                    updateBalance(win);
+                    document.getElementById('roulette-msg').textContent = `Padla ${resultColor === 'red' ? 'červená' : resultColor === 'black' ? 'černá' : 'zelená'}! Vyhráli jste ${win} NC!`;
+                } else {
+                    document.getElementById('roulette-msg').textContent = `Padla ${resultColor === 'red' ? 'červená' : resultColor === 'black' ? 'černá' : 'zelená'}. Prohra.`;
+                }
+            }, 1000);
+        }
+
+        // --- DICE ---
+        let diceBet = 50;
+        let diceTarget = 50;
+        let diceCondition = 'over';
+
+        function adjustDiceBet(amount) {
+            diceBet = Math.max(10, diceBet + amount);
+            document.getElementById('dice-bet').textContent = diceBet;
+        }
+
+        function setDiceCondition(cond) {
+            diceCondition = cond;
+            document.getElementById('dice-cond-over').style.background = cond === 'over' ? 'rgba(0, 242, 255, 0.3)' : 'rgba(15, 23, 42, 0.8)';
+            document.getElementById('dice-cond-over').style.borderColor = cond === 'over' ? '#00f2ff' : 'rgba(0, 242, 255, 0.3)';
+            document.getElementById('dice-cond-under').style.background = cond === 'under' ? 'rgba(0, 242, 255, 0.3)' : 'rgba(15, 23, 42, 0.8)';
+            document.getElementById('dice-cond-under').style.borderColor = cond === 'under' ? '#00f2ff' : 'rgba(0, 242, 255, 0.3)';
+        }
+
+        function updateDiceTarget(val) {
+            diceTarget = parseInt(val);
+            document.getElementById('dice-target-val').textContent = diceTarget;
+        }
+
+        function rollDice() {
+            if (balance < diceBet) {
+                document.getElementById('dice-msg').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-diceBet);
+            const roll = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('dice-result').textContent = roll;
+
+            let winCondition = false;
+            if (diceCondition === 'over' && roll > diceTarget) winCondition = true;
+            if (diceCondition === 'under' && roll < diceTarget) winCondition = true;
+
+            if (winCondition) {
+                let chance = diceCondition === 'over' ? (100 - diceTarget) : diceTarget;
+                let mult = parseFloat((99 / chance).toFixed(2));
+                let win = Math.floor(diceBet * mult);
+                updateBalance(win);
+                document.getElementById('dice-msg').textContent = `Padlo ${roll}! Výhra ${win} NC (${mult}x)`;
+            } else {
+                document.getElementById('dice-msg').textContent = `Padlo ${roll}. Prohra.`;
+            }
+        }
+
+        // --- MINES ---
+        let minesBet = 50;
+        let minesCount = 3;
+        let minesActive = false;
+        let minesBoard = [];
+        let revealedCount = 0;
+        let currentMinesMultiplier = 1.00;
+
+        function adjustMinesBet(amount) {
+            if (minesActive) return;
+            minesBet = Math.max(10, minesBet + amount);
+            document.getElementById('mines-bet').textContent = minesBet;
+        }
+
+        function setMinesCount(cnt) {
+            if (minesActive) return;
+            minesCount = cnt;
+            document.querySelectorAll('.mines-count-btn').forEach(b => b.style.borderColor = 'rgba(0, 242, 255, 0.3)');
+            document.getElementById('mines-cnt-' + cnt).style.borderColor = '#00f2ff';
+        }
+
+        function startMines() {
+            if (balance < minesBet) {
+                document.getElementById('mines-msg').textContent = "Nedostatek NC!";
+                return;
+            }
+            updateBalance(-minesBet);
+            minesActive = true;
+            revealedCount = 0;
+            currentMinesMultiplier = 1.00;
+
+            document.getElementById('mines-start-btn').style.display = 'none';
+            document.getElementById('mines-cashout-btn').style.display = 'inline-block';
+            document.getElementById('mines-msg').textContent = "Odkrývejte bezpečná pole!";
+
+            minesBoard = new Array(25).fill('safe');
+            let placed = 0;
+            while (placed < minesCount) {
+                let idx = Math.floor(Math.random() * 25);
+                if (minesBoard[idx] === 'safe') {
+                    minesBoard[idx] = 'mine';
+                    placed++;
+                }
+            }
+
+            renderMinesGrid();
+        }
+
+        function renderMinesGrid() {
+            const container = document.getElementById('mines-grid');
+            container.innerHTML = '';
+            for (let i = 0; i < 25; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'mine-cell';
+                cell.id = 'mine-cell-' + i;
+                cell.onclick = () => clickMineCell(i);
+                container.appendChild(cell);
+            }
+        }
+
+        function clickMineCell(idx) {
+            if (!minesActive) return;
+            const cell = document.getElementById('mine-cell-' + idx);
+            if (cell.dataset.revealed === 'true') return;
+
+            cell.dataset.revealed = 'true';
+
+            if (minesBoard[idx] === 'mine') {
+                cell.textContent = '💣';
+                cell.style.background = 'rgba(220, 38, 38, 0.3)';
+                cell.style.borderColor = '#dc2626';
+                endMines();
+            } else {
+                cell.textContent = '💎';
+                cell.style.background = 'rgba(16, 185, 129, 0.2)';
+                cell.style.borderColor = '#10b981';
+                revealedCount++;
+                currentMinesMultiplier = parseFloat((currentMinesMultiplier * 1.2).toFixed(2));
+                document.getElementById('mines-msg').textContent = `Násobitel: ${currentMinesMultiplier}x (Výhra: ${Math.floor(minesBet * currentMinesMultiplier)} NC)`;
+
+                if (revealedCount === (25 - minesCount)) {
+                    cashOutMines(true);
+                }
+            }
+        }
+
+        function cashOutMines(isWin = false) {
+            if (!minesActive) return;
+            minesActive = false;
+            const win = Math.floor(minesBet * currentMinesMultiplier);
+            updateBalance(win);
+            document.getElementById('mines-msg').textContent = isWin ? `Gratulace! Vyhráli jste ${win} NC!` : `Cash Out úspěšný! Výhra ${win} NC`;
+            
+            for (let i = 0; i < 25; i++) {
+                const cell = document.getElementById('mine-cell-' + i);
+                if (minesBoard[i] === 'mine') {
+                    cell.textContent = '💣';
+                }
+            }
+
+            document.getElementById('mines-start-btn').style.display = 'inline-block';
+            document.getElementById('mines-cashout-btn').style.display = 'none';
+        }
+
+        function endMines() {
+            minesActive = false;
+            document.getElementById('mines-msg').textContent = "Bum! Narazili jste na minu. Prohra.";
+            for (let i = 0; i < 25; i++) {
+                const cell = document.getElementById('mine-cell-' + i);
+                if (minesBoard[i] === 'mine') {
+                    cell.textContent = '💣';
+                }
+            }
+            document.getElementById('mines-start-btn').style.display = 'inline-block';
+            document.getElementById('mines-cashout-btn').style.display = 'none';
+        }
+
+        // Inicializace prázdné mřížky pro Mines při startu
+        renderMinesGrid();
+    </script>
+</body>
+</html>
